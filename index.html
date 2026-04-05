@@ -1,111 +1,143 @@
-<html>
-        <head><title>Downloaded HTML</title></head>
-        <body>
-            <pre style="white-space: pre-wrap; word-wrap: break-word;"><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Dana’s 18th Birthday Invitation</title>
 
   <style>
-    /* Load Xiomara font */
     @font-face {
       font-family: "Xiomara";
-      src: url("./Xiomara-Script.ttf");
+      src: url("./Xiomara-Script.ttf") format("truetype");
     }
 
     body {
       margin: 0;
       padding: 0;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: center;
-      background: url('./royal-palace-bg.jpg') no-repeat center/cover;
+      align-items: flex-start;
+      background: url('royal-palace-bg.jpg') no-repeat center center fixed;
+      background-size: 100% 100%; 
       font-family: "Xiomara", serif;
-      overflow: hidden;
+      color: #3d3012;
+      overflow-x: hidden;
     }
 
-    /* Sparkles */
     .sparkles {
-      position: absolute;
-      width: 100%;
-      height: 100%;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: url('sparkles.png') repeat;
-      animation: sparkleMove 12s linear infinite;
-      opacity: 0.7;
+      animation: sparkleMove 15s linear infinite;
+      opacity: 0.4;
       pointer-events: none;
+      z-index: 10;
     }
 
     @keyframes sparkleMove {
       from { background-position: 0 0; }
-      to { background-position: 1200px 1200px; }
-    }
-
-    /* Envelope */
-    .envelope {
-      width: 220px;
-      height: 140px;
-      background: url('elegant-envelope.png') no-repeat center/contain;
-      cursor: pointer;
-      transition: transform 0.6s;
-      z-index: 2;
-    }
-
-    .envelope.open {
-      transform: rotateX(180deg);
-    }
-
-    /* Invitation */
-    .invitation {
-      display: none;
-      text-align: center;
-      color: black;
-      text-shadow: 0 1px 3px rgba(255,255,255,0.6);
-      max-width: 700px;
-    }
-
-    .invitation img {
-      width: 280px;
-      border-radius: 18px;
-      box-shadow: 0 0 25px gold;
-      margin-bottom: 15px;
-    }
-
-    /* Typing effect */
-    .line {
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: 2px solid black;
-      width: 0;
-      margin: 8px auto;
-      animation: typing 2.5s steps(40, end) forwards, blink 0.7s step-end infinite;
-    }
-
-    .line:nth-child(1) { animation-delay: 0.5s; }
-    .line:nth-child(2) { animation-delay: 3s; }
-    .line:nth-child(3) { animation-delay: 5.5s; }
-    .line:nth-child(4) { animation-delay: 7.5s; }
-
-    @keyframes typing {
-      to { width: 100%; }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent; }
+      to { background-position: 1000px 1000px; }
     }
 
     .container {
+      width: 85%;
+      max-width: 500px;
+      margin-top: 12vh;
       text-align: center;
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      padding-bottom: 100px; /* Extra space for scrolling */
+    }
+
+    .envelope {
+      width: 180px;
+      height: 120px;
+      background: url('elegant-envelope.png') no-repeat center/contain;
+      cursor: pointer;
+      margin: 40px auto 10px auto;
+      transition: transform 0.8s ease-out, opacity 0.5s;
+    }
+
+    .envelope.open {
+      transform: translateY(-50px) scale(0.5);
+      opacity: 0;
+    }
+
+    .invite-text {
+      font-size: 1.8rem;
+      color: #8a702a;
+      margin-top: 0;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 1; }
+    }
+
+    .invitation {
+      display: none;
+      opacity: 0;
+      transition: opacity 1.5s ease-in;
+    }
+
+    .profile-img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #d4af37;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+      margin-bottom: 20px;
+    }
+
+    /* Styling for Venue and Attire Images */
+    .info-img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      border: 2px solid #d4af37;
+      margin-top: 25px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+
+    .line {
+      overflow: hidden;
+      white-space: nowrap;
+      width: 0;
+      margin: 12px auto;
+      font-size: 1.3rem;
+      border-right: 2px solid transparent;
+      animation: typing 3s steps(40, end) forwards;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    /* Animation Timing */
+    .line:nth-child(2) { animation-delay: 1.5s; } /* Dana is turning... */
+    .line:nth-child(3) { animation-delay: 4.5s; } /* We happily invite... */
+    .line:nth-child(4) { animation-delay: 7.5s; } /* May 19... */
+    .line:nth-child(5) { animation-delay: 10.5s; } /* at Florenceville... */
+    .line:nth-child(6) { animation-delay: 13.5s; } /* Scroll hint... */
+
+    h1.line { font-size: 2.2rem; margin-bottom: 20px; }
+
+    .scroll-hint {
+        font-style: italic;
+        margin-top: 40px;
+        font-size: 1.1rem;
+        color: #8a702a;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- 🎵 Background Music -->
   <audio id="bg-music" loop>
     <source src="million-dreams.mp3" type="audio/mpeg">
   </audio>
@@ -113,42 +145,54 @@
   <div class="sparkles"></div>
 
   <div class="container">
-    <!-- Envelope -->
-    <div class="envelope" id="envelope"></div>
+    <div id="intro-section">
+      <div class="envelope" id="envelope"></div>
+      <p class="invite-text" id="invite-text">You're invited! Click me</p>
+    </div>
 
-    <!-- Invitation -->
-    <div class="invitation" id="invitation">
-      <img src="dana-photo.png" alt="Dana">
+    <div id="invitation" class="invitation">
+      <img src="dana-photo.png" alt="Dana" class="profile-img">
 
       <h1 class="line">Dana is turning 18!!</h1>
-      <p class="line">We happily invite you to her birthday party!</p>
-      <p class="line">May 19, 2026</p>
-      <p class="line">Florenceville Private Resort & Events Place</p>
+      <p class="line">We happily invite you to her party!</p>
+      <p class="line">May 19, 2026, 5:00pm</p>
+      <p class="line">at Florenceville Private Resort & Events Place General Trias Cavite</p>
+      
+      <p class="line scroll-hint">Scroll down for details ↓</p>
+      
+      <!-- Venue Section -->
+      <img src="location-venue.png" alt="Venue" class="info-img">
+      
+      <!-- Attire Section -->
+      <p style="margin-top: 50px; font-size: 1.5rem;">Dress Code</p>
+      <img src="attire-guide.png" alt="Attire Guide" class="info-img">
     </div>
   </div>
 
   <script>
     const envelope = document.getElementById("envelope");
+    const inviteText = document.getElementById("invite-text");
     const invitation = document.getElementById("invitation");
     const music = document.getElementById("bg-music");
 
-    // 🎵 Play music on first click anywhere
-    document.addEventListener("click", function () {
-      music.play();
+    document.addEventListener("click", () => {
+      music.play().catch(e => console.log("Music blocked"));
     }, { once: true });
 
-    // Envelope animation
     envelope.addEventListener("click", () => {
       envelope.classList.add("open");
-
+      inviteText.style.opacity = "0"; 
+      
       setTimeout(() => {
-        envelope.style.display = "none";
+        document.getElementById("intro-section").style.display = "none";
         invitation.style.display = "block";
+        setTimeout(() => { 
+            invitation.style.opacity = "1";
+            document.body.style.overflowY = "auto";
+        }, 100);
       }, 600);
     });
   </script>
 
 </body>
-</html></pre>
-        </body>
-    </html>
+</html>
