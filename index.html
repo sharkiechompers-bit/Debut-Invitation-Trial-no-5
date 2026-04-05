@@ -80,16 +80,14 @@
     }
 
     /* FIXED: Dana's Image Alignment */
-    .profile-img {
-      width: 220px;
-      height: 220px;
-      object-fit: cover; /* Crops the image to fit the circle */
-      object-position: top; /* PRIORITIZES THE FACE/TOP of the photo */
-      border-radius: 50%;
-      border: 4px solid #ffffff;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-      margin-bottom: 20px;
-    }
+.profile-img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover; 
+  object-position: center 10%; /* This "pulls" the photo down to show the face */
+  border-radius: 50%;
+  border: 4px solid #ffffff;
+}
 
     .info-img {
       width: 100%;
