@@ -55,9 +55,10 @@
       z-index: 2;
     }
 
+    /* Small Envelope Styling */
     .envelope {
-      width: 280px;
-      height: 200px;
+      width: 200px; /* Reduced size */
+      height: 140px; /* Reduced size */
       background: url('red-env.png') no-repeat center/contain;
       cursor: pointer;
       margin: 20px auto; 
@@ -105,10 +106,9 @@
       60% {transform: translateY(-5px);}
     }
 
-    /* List Image Styling */
     .list-section {
       width: 100vw;
-      background-color: transparent; /* Changed to transparent */
+      background-color: transparent;
       text-align: center;
     }
 
@@ -117,7 +117,6 @@
       font-size: 1.8rem;
       color: #ffffff;
       font-family: serif;
-      /* Added Red Glow Outline */
       text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
     }
 
@@ -132,7 +131,7 @@
     .see-you-there {
       width: 100vw;
       padding: 100px 0;
-      background-color: transparent; /* Changed to transparent */
+      background-color: transparent;
       font-size: 3.5rem;
       font-weight: bold;
       text-align: center;
@@ -146,10 +145,16 @@
       width: 100%;
       margin: 12px auto;
       font-size: 1.5rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Helps text readability on image background */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     h1.line { font-size: 2.5rem; }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
   </style>
 </head>
 
@@ -162,8 +167,9 @@
 
   <div class="container">
     <div id="intro-section">
-      <p class="invite-text" style="font-size: 2rem; animation: pulse 2s infinite;">You're invited! (Click the envelope)</p>
+      <!-- Envelope first, text below -->
       <div class="envelope" id="envelope"></div>
+      <p class="invite-text" style="font-size: 2rem; animation: pulse 2s infinite;">You're invited! (Click the envelope)</p>
     </div>
 
     <div id="invitation" class="invitation">
@@ -175,15 +181,20 @@
       <p class="line">May 19, 2026, 5:00pm</p>
       <p class="line">at Florenceville Private Resort & Events Place <br> General Trias Cavite</p>
       
-      <!-- SCROLL HINT -->
       <p class="scroll-hint">Scroll down ▼</p>
       
       <img src="location-venue.png" alt="Venue" style="width:100%; max-width:400px; border-radius:12px; margin-top:20px;">
     </div>
   </div>
 
-  <!-- LIST SECTIONS WITH DIVIDERS -->
   <div id="extra-photos" style="display:none;">
+    
+    <!-- ADDITION: Dress Code Section -->
+    <div class="list-section">
+      <div class="divider-text">⊹₊˚‧︵‿₊୨🌹୧₊‿︵‧˚₊⊹</div>
+      <img src="dress-code.png" class="full-screen-img">
+    </div>
+
     <div class="list-section">
       <div class="divider-text">⊹₊˚‧︵‿₊୨🌹୧₊‿︵‧˚₊⊹</div>
       <img src="18-roses.png" class="full-screen-img">
@@ -199,7 +210,6 @@
       <img src="18-bluebills.png" class="full-screen-img">
     </div>
 
-    <!-- CLOSING MESSAGE -->
     <div class="see-you-there">
       See you there~
     </div>
